@@ -416,7 +416,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: bottom;
+      object-position: left;
 
       display: block;
       /* Adding a dark overlay so text is easier to read */
@@ -504,3 +504,4 @@
     width: 100%; /* Stack elements vertically instead of side-by-side */
   }
 }
+
