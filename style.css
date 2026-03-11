@@ -1,0 +1,486 @@
+@layer global, component, ultitity;
+
+@layer global {
+  /* source-sans-3-regular - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Source Sans 3";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/source-sans-3-v19-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* source-sans-3-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Source Sans 3";
+    font-style: normal;
+    font-weight: 700;
+    src: url("/fonts/source-sans-3-v19-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  /* Fonts */
+  :root {
+    --fs-14: calc(14 / 16 * 1rem);
+    --fs-16: calc(16 / 16 * 1rem);
+    --fs-24: calc(24 / 16 * 1rem);
+    --fs-36: calc(36 / 16 * 1rem);
+    --fs-42: calc(42 / 16 * 1rem);
+    --fs-48: calc(48 / 16 * 1rem);
+    --fs-72: calc(72 / 16 * 1rem);
+
+    --font-size-topnav: var(--fs-24);
+    --font-size-h1: var(--fs-42);
+    --font-size-h2: var(--fs-36);
+    --font-size-h3: var(--fs-24);
+
+    @media (width >= calc(600 / 16 * 1rem)) {
+      --font-size-topnav: var(--fs-16);
+      --font-size-h1: var(--fs-72);
+      --font-size-h2: var(--fs-48);
+    }
+  }
+
+  /* Colours */
+  :root {
+    --c-white: hsl(0, 0%, 100%);
+    --c-light-gray: rgb(223, 218, 218);
+    --c-gray-dark: hsl(230, 10%, 25%);
+    --c-purple: hsl(232, 58%, 55%);
+    --c-teal: hsl(180, 100%, 42%);
+    --c-transparent: transparent;
+    --c-magenta: hsl(320, 85%, 41%);
+    --c-yellow: hsl(45, 100%, 51%);
+    --c-dark-yellow: hsl(45, 87%, 34%);
+
+    /* --topnav-button: var(--c-light-gray); */
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* TEMPORARY border */
+  /* * {
+    margin: 0;
+    padding: 0;
+    border: 1px solid red;
+  } */
+
+  body {
+    font-family: "Source Sans 3", Arial, Helvetica, sans-serif;
+    line-height: 1.3;
+    color: var(--colour-text-dark);
+    padding: 0;
+    margin: 0;
+  }
+
+  div {
+    padding: 0;
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.1;
+  }
+
+  h1 {
+    font-size: var(--font-size-h1);
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+  }
+
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img,
+  picture,
+  svg {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 2rem;
+  }
+
+  .wrapper {
+    padding: 0 7rem;
+  }
+}
+
+/* components for S1 (section 1) */
+@layer components {
+  @layer section1 {
+    .section1 {
+      /* background image */
+
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), no-repeat,
+        url(/img/spc-topnav-bg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: rgba(52, 50, 50, 0.5);
+      background-blend-mode: darken;
+
+      /* background size */
+      width: 100vw;
+      height: 45rem;
+      /* font color */
+      color: var(--c-light-gray);
+    }
+
+    .flex-start {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+    }
+
+    .flex-sbetween {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .flex-end {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      justify-items: flex-end;
+      align-content: flex-end;
+      align-items: flex-end;
+    }
+
+    .topnav__wrapper {
+      margin-top: 0.5rem;
+    }
+
+    .topnav__logo {
+      margin: 0 1rem 0 0;
+      width: calc(40 / 16 * 1rem);
+      border-radius: 1.2rem;
+
+      @media (width >= calc(600 / 16 * 1rem)) {
+        width: calc(80 / 16 * 1rem);
+      }
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .topnav__name {
+      font-size: 2.2rem;
+      width: 15rem;
+      font-family: playfair display;
+    }
+
+    .topnav__name span {
+      font-size: 1.5rem;
+      font-family: inter;
+    }
+
+    .topnav__links {
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      list-style-type: none;
+      margin-right: 2rem;
+    }
+
+    .topnav__link {
+      font-size: calc(20 / 16 * 1rem);
+      font-weight: 525;
+      letter-spacing: 0.05em;
+      color: rgb(223, 218, 218);
+
+      &:hover {
+        text-decoration: underline 2px;
+        text-underline-offset: 4px;
+      }
+    }
+
+    .s1body {
+      margin: 3rem 0 0 0;
+    }
+
+    .s1body p:first-child {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      color: #e8a530;
+      border: 1px solid var(--c-dark-yellow);
+      border-radius: 1rem;
+      background-color: #e8a53033;
+      margin: 0 0 32px 0;
+    }
+
+    .s1body h1 {
+      color: #ffffff;
+      font-family: Playfair Display;
+      font-size: 72px;
+      width: 40rem;
+      margin: 0 0 24px 0;
+    }
+
+    .s1body h1 span {
+      color: #e8a530;
+      font-size: 90px;
+    }
+
+    .s1body p:last-child {
+      font-family: inter;
+      font-size: 20px;
+      width: 30rem;
+      margin: 0 0 40px 0;
+    }
+
+    .s1bodybutton1 {
+      display: inline-block;
+      font-family: inter, sans-serif;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #e8a530;
+
+      border-color: #e8a530;
+      border-radius: 1rem;
+      padding: 0.1rem 2rem;
+    }
+  }
+
+  @layer section2 {
+    .section2 {
+      margin-top: 5rem;
+
+      background-color: var(--c-white);
+      background-size: cover;
+
+      font-family:
+        inter,
+        sans sans-serif;
+      color: #1d212b;
+    }
+
+    .section2 p:first-child {
+      color: #e8a530;
+      font-weight: bold;
+      font-size: calc(14 / 16 * (1rem));
+
+      margin: 0;
+      padding: 0 0 calc(16 / 16 * (1rem)) 0;
+    }
+
+    .section2 h2 {
+      font-family: fairplay display;
+      font-size: calc(48 / 16 * (1rem));
+      margin: 0 0 calc(24 / 16 * (1rem)) 0;
+    }
+
+    .section2 p:last-child {
+      color: #6a7181;
+      font-size: calc(18 / 16 * (1rem));
+      margin: 0 0 calc(32 / 16 * (1rem)) 0;
+    }
+
+    /* Grid for left side */
+    .grid-col-left {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .grid-row-left {
+      margin-top: 30px;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    /* Left side texts */
+    .four-points {
+      display: grid;
+      margin: auto;
+      gap: 1.5rem;
+
+      grid-template-areas:
+        "1fr 1fr"
+        "1fr 1fr";
+    }
+
+    .fps p:first-child {
+      font-size: var(--fs-16);
+      color: #1d212b;
+      font-weight: bold;
+      padding: 0 0 calc(6 / 16 * (1rem)) 0;
+      margin: 0;
+    }
+
+    .fps p:last-child {
+      font-size: var(--fs-14);
+      color: #6a7181;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Grid for right side */
+    .pic {
+      border-radius: 1rem;
+    }
+
+    .grid-right {
+      column-count: 2; /* Creates two columns */
+      column-gap: 1rem; /* Space between columns */
+      width: 100%;
+    }
+
+    /* Ensure boxes don't break across columns */
+    .grid-right > div {
+      display: inline-block; /* Essential for column flow */
+      width: 100%;
+      margin-bottom: 1rem; /* Adds the vertical gap */
+      break-inside: avoid; /* Prevents a box from splitting between columns */
+    }
+  }
+
+  @layer section3 {
+    .section3 {
+      background-color: #eeeff280;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+
+      margin: 0 0 5rem 0;
+    }
+
+    /* Texts */
+    .s3text p {
+      color: #e8a530;
+      font-size: var(--fs-14);
+      font-weight: bold;
+    }
+
+    .s3text h1 {
+      font-family: playfair display;
+      color: #1d212b;
+      font-size: var(--fs-48);
+      font-weight: bold;
+    }
+
+    /* Gatherings */
+    .gatherings {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      gap: 2rem;
+    }
+
+    .gathering1,
+    .gathering2 {
+      display: flex;
+      flex-direction: column;
+      /* background */
+      background-color: #fff;
+
+      transition: transform 0.2s;
+    }
+
+    .gathering1:hover,
+    .gathering2:hover {
+      transform: scale(1.05);
+    }
+
+    /* Text Overlay with Image */
+    .gimage {
+      position: relative; /* The anchor for the text */
+      width: calc(350 / 16 * (1rem));
+      height: 200px;
+      overflow: hidden; /* Keeps the image corners rounded */
+      font-family: sans-serif;
+      object-fit: fill;
+    }
+
+    .gimage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: bottom;
+
+      display: block;
+      /* Adding a dark overlay so text is easier to read */
+      filter: brightness(50%);
+      border-radius: 1rem 1rem 0 0;
+    }
+
+    .text-overlay {
+      position: absolute; /* Moves text on top of the image */
+      bottom: 20px; /* Distance from the bottom */
+      left: 20px; /* Distance from the left */
+      color: white;
+    }
+
+    .text-overlay p:first-child {
+      font-family: inter, sans-serif;
+      margin: 0;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .text-overlay p:last-child {
+      margin: 0;
+
+      font-family:
+        playfair display,
+        serif;
+      font-weight: bold;
+      font-size: calc(24 / 16 * (1rem));
+    }
+
+    .gtext {
+      font-family: inter, sans-serif;
+      font-size: calc(14 / 16 * 1rem);
+      color: #6a7181;
+
+      width: calc(350 / 16 * 1rem);
+
+      padding: 1.5rem;
+      text-align: start;
+    }
+
+    .gtext span {
+      color: #1d212b;
+    }
+  }
+}
+
+@layer utility {
+  .visually-hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+
+    &.skip:focus {
+      left: 0;
+      width: auto;
+      height: auto;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid;
+    }
+  }
+}
