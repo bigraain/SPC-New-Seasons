@@ -485,3 +485,22 @@
   }
 }
 
+/* Tablets and small laptops (under 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    width: 90%;
+  }
+}
+
+/* Mobile Devices (under 768px) */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide desktop menu for a hamburger menu */
+  }
+  .hero-text {
+    font-size: 1.5rem; /* Shrink text for smaller screens */
+  }
+  .column {
+    width: 100%; /* Stack elements vertically instead of side-by-side */
+  }
+}
